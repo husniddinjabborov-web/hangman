@@ -1,0 +1,235 @@
+$gradient-1: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+$gradient-2: linear-gradient(135deg, #f9d423, #ff4e50);
+$gradient-3: linear-gradient(135deg, #36d1dc, #5b86e5);
+$gradient-4: linear-gradient(135deg, #ff758c, #ff7eb3);
+$gradient-5: linear-gradient(135deg, #8e44ad, #c0392b);
+$gradient-6: linear-gradient(135deg, #f12711, #f5af19);
+$gradient-7: linear-gradient(135deg, #f76b1c, #ee0979);
+$primary-bg: #2c3e50;
+$hover-bg: #34495e;
+$white: #fff;
+$black: black;
+$box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+$button-radius: 5px;
+$card-radius: 15px;
+$input-radius: 12px;
+
+.flashcards {
+  height: 100vh;
+  background: $gradient-1;
+
+  .navbar {
+    background-color: $primary-bg;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    flex-wrap: wrap; 
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+
+    button {
+      color: $white;
+      border: none;
+      padding: 12px 25px;
+      margin: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: $button-radius;
+      transition: background-color 0.3s, transform 0.2s;
+      flex: 1 1 auto;
+      max-width: 150px;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+    }
+
+    button.active {
+      background-color: $hover-bg;
+    }
+  }
+
+  > p {
+    padding-top: 20px;
+    color: $white;
+    font-size: 2em;
+    text-align: center;
+  }
+
+  .card-container {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #0f2027);
+
+    .card {
+      width: calc(33.333% - 20px);
+      height: auto;
+      border: none;
+      border-radius: $card-radius;
+      box-shadow: $box-shadow;
+      background: $gradient-2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-family: 'Roboto', sans-serif;
+      font-size: 16px;
+      color: $white;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+
+      &:nth-child(2n) {
+        background: $gradient-3;
+      }
+
+      &:nth-child(3n) {
+        background: $gradient-4;
+      }
+
+      &:hover {
+        transform: translateY(-12px) scale(1.05);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+      }
+
+      .card-front,
+      .card-back {
+        gap: 16px;
+        border-radius: $card-radius;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 300px;
+        align-items: center;
+        text-align: center;
+        color: $white;
+      }
+
+      .card-front {
+        animation: card-front 1s linear 1;
+        background: $gradient-5;
+      }
+
+      .card-back {
+        animation: card-back 1s linear 1;
+        background-color: $primary-bg;
+      }
+
+      p {
+        font-size: 1.9rem;
+      }
+
+      button,
+      form button {
+        background: $gradient-6;
+        color: $white;
+        border: none;
+        border-radius: $input-radius;
+        padding: 12px 24px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s;
+        width: fit-content;
+
+        &:hover {
+          background: $gradient-7;
+          transform: scale(1.1);
+        }
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+        align-items: center;
+      }
+
+      form input {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #ddd;
+        border-radius: $input-radius;
+        font-size: 1.3em;
+        transition: border-color 0.3s, box-shadow 0.3s;
+
+        &:focus {
+          border-color: #42a5f5;
+          box-shadow: 0 4px 8px rgba(66, 165, 245, 0.3);
+          outline: none;
+        }
+      }
+    }
+  }
+
+  @keyframes card-front {
+    from {
+      transform: scale(0);
+      background: #16a085;
+    }
+
+    to {
+      transform: scale(1);
+      background: $gradient-5;
+    }
+  }
+
+  @keyframes card-back {
+    from {
+      transform: scale(0);
+      background: $primary-bg;
+    }
+
+    to {
+      transform: scale(1);
+      background-color: $black;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .navbar {
+      padding: 8px 10px;
+    }
+
+    .navbar button {
+      font-size: 14px; 
+      padding: 10px 20px; 
+    }
+
+    > p {
+      padding-top: 20px;
+      color: $white;
+      font-size: 1.8em;
+      text-align: center;
+    }
+
+    .card-container .card {
+      width: calc(50% - 20px);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .navbar button {
+      font-size: 12px;
+      padding: 8px 15px;
+    }
+
+    > p {
+      padding-top: 20px;
+      color: $white;
+      font-size: 1.6em;
+      text-align: center;
+    }
+
+    .card-container .card {
+      width: 100%;
+    }
+  }
+}
