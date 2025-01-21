@@ -28,7 +28,7 @@ function App() {
                   <img src={Banner} alt="Hangman Image" />
                 </div>
                 <nav id='nav'>
-                  <a href="#">Ishlatish qo'llanmasi</a>
+                  <a href="https://telegra.ph/Hangman-saytini-ishlatish-qollanmasi-01-21#/">Ishlatish qo'llanmasi</a>
                 </nav>
               </article>
             </main>
